@@ -14,10 +14,7 @@ class App {
 
   database() {
     mongoose.connect(process.env.DB_URL, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
+      dbName: 'deno-test',
     });
   }
 
