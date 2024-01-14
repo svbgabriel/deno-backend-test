@@ -1,11 +1,10 @@
-// @deno-types="npm:@types/express@4.17.21"
-import { Request, Response } from "express";
+import { Context } from "hono";
 import { format, parseISO } from "date-fns";
 import config from "../config.ts";
 import Opportunity from "../models/opportunity.ts";
 import { makeXML } from "../lib/helpers.ts";
 
-export const store = async (_req: Request, res: Response) => {
+export const store = async (c: Context) => {
   // Recupera as oportunidades com status igual a ganho (won) no Pipedrive
   const dealsResponse = await fetch(
     `${config.pipedriveBaseUrl}/v1/deals?api_token=${config.pipedriveToken}&status=won`
@@ -31,8 +30,6 @@ export const store = async (_req: Request, res: Response) => {
       );
 
       const order = await orderResponse.json();
-
-      console.log(order);
 
       return order.retorno.pedidos;
     })
@@ -60,10 +57,10 @@ export const store = async (_req: Request, res: Response) => {
     });
   });
 
-  return res.json({ total: orders.length });
+  return c.json({ total: orders.length });
 };
 
-export const list = async (_req: Request, res: Response) => {
+export const list = async (c: Context) => {
   const opportunities = await Opportunity.aggregate([
     {
       $group: {
@@ -74,7 +71,7 @@ export const list = async (_req: Request, res: Response) => {
       },
     },
   ]);
-  return res.json({
+  return c.json({
     data: opportunities[0]._id.date,
     valorTotal: opportunities[0].total,
   });

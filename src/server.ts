@@ -1,4 +1,4 @@
 import { app } from "./app.ts";
 import config from "./config.ts";
 
-app.listen(config.port);
+Deno.serve({ port: config.port }, app.fetch);
