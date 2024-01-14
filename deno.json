@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-env --allow-read --allow-net --allow-sys src/server.ts",
+    "mock-server": "deno run --allow-net mock-server.ts"
+  },
+  "imports": {
+    "dotenv": "https://deno.land/std@0.212.0/dotenv/load.ts",
+    "hono": "https://deno.land/x/hono@v3.12.3/mod.ts",
+    "mongoose": "npm:mongoose@^8.0.4",
+    "date-fns": "npm:date-fns@^3.2.0",
+    "express": "npm:express@^4.18.2"
+  }
+}
