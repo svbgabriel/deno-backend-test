@@ -1,27 +1,29 @@
 # deno-backend-test
 
-Testado com o node versão v12.16.1
+Tested with deno v1.39.4
 
-## Para subir o serviço:
+## To start up the application
 
-- Copiar o arquivo .env.example com o nome .env
-- Preencher os atributos:
-  - PORT: Número da porta a ser utilizado (padrão 3333)
-  - DB_URL: URL de conexão com o MongoDB
-  - PIPEDRIVE_TOKEN: Token de API do Pipedrive
-  - PIPEDRIVE_COMPANY: Nome da companhia do Pipedrive
-  - BLING_TOKEN: Token de API do Bling
+- Copy the file .env.example as .env
+- Set the variables:
+  - PORT: Port number (default 8080)
+  - DB_URL: MongoDB URL
+  - PIPEDRIVE_TOKEN: Token API of Pipedrive
+  - PIPEDRIVE_BASE_URL: Pipedrive base URL
+  - BLING_TOKEN: Token API of Bling
+  - BLING_BASE_URL: Bling base URL
+- Run the following command:
+```sh
+deno task dev
+```
 
-* Executar o comando:
+## Execution:
 
-  `npm run-script dev`
-
-## Execução:
-
-### Sincronização do Pipedrive e Bling
-
-    POST localhost:PORT/integration
-
-### Agregação dos valores
-
-    GET localhost:PORT/integration
+### Sync Pipedrive and Bling
+```
+POST http://localhost:PORT/integration
+```
+### Aggregate values
+```
+GET http://localhost:PORT/integration
+```
