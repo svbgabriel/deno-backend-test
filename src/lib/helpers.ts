@@ -1,11 +1,6 @@
-interface Deal {
-  org_name: string;
-  won_time: string;
-  title: string;
-  value: number;
-}
+import { IDeal } from "../interfaces.ts";
 
-export const makeXML = (deal: Deal) => {
+export const makeXML = (deal: IDeal) => {
   return `<?xml version="1.0" encoding="UTF-8"?>
     <pedido>
         <cliente>

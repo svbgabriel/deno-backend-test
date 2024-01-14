@@ -1,8 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 import config from "../config.ts";
 
-const options = {
+const options: ConnectOptions = {
   dbName: "deno-test",
+  family: undefined,
+  hints: undefined,
+  localAddress: undefined,
+  localPort: undefined,
+  lookup: undefined,
 };
 
 mongoose.connect(config.databaseUrl, options);

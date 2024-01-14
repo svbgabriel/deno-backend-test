@@ -3,6 +3,7 @@ import { format, parseISO } from "date-fns";
 import config from "../config.ts";
 import Opportunity from "../models/opportunity.ts";
 import { makeXML } from "../lib/helpers.ts";
+import { IDeal } from "../interfaces.ts";
 
 export const store = async (c: Context) => {
   // Recupera as oportunidades com status igual a ganho (won) no Pipedrive
@@ -13,7 +14,7 @@ export const store = async (c: Context) => {
 
   // Insere as oportunidades ganhas como pedido no Bling
   const orders = await Promise.all(
-    deals.data.flatMap(async (deal: any) => {
+    deals.data.flatMap(async (deal: IDeal) => {
       const xml = makeXML(deal);
       const formData = new URLSearchParams();
       formData.append("apikey", config.blingToken);

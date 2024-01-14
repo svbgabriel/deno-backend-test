@@ -1,13 +1,7 @@
 import { Schema, model } from "mongoose";
+import { IOpportunity } from "../interfaces.ts";
 
-interface Opportunity {
-  date: Date;
-  value: number;
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-const OpportunitySchema = new Schema<Opportunity>(
+const OpportunitySchema = new Schema<IOpportunity>(
   {
     date: {
       type: Date,
@@ -21,4 +15,4 @@ const OpportunitySchema = new Schema<Opportunity>(
   { timestamps: true }
 );
 
-export default model<Opportunity>("Opportunities", OpportunitySchema);
+export default model<IOpportunity>("Opportunities", OpportunitySchema);
