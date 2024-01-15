@@ -17,13 +17,6 @@ Tested with deno v1.39.4
 deno task dev
 ```
 
-## Execution:
+## Check the swagger doc
 
-### Sync Pipedrive and Bling
-```
-POST http://localhost:PORT/integration
-```
-### Aggregate values
-```
-GET http://localhost:PORT/integration
-```
+http://localhost:8080/swagger-ui/

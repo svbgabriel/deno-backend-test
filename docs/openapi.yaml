@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: deno-backend-test - OpenAPI 3.0
+  description: This is simple API made in deno that sync deals of pipedrive to bling. 
+  license:
+    name: MIT
+    url: https://mit-license.org/
+  version: 1.0.0
+servers:
+  - url: /
+tags:
+  - name: integration
+    description: Operations about integration
+paths:
+  /integration:
+    post:
+      tags:
+        - integration
+      summary: Sync deals of pipedrive to bling opportunities
+      description: ''
+      operationId: sync
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncResponse'
+    get:
+      tags:
+        - integration
+      summary: Get a list of the data aggregation of the opportunities
+      description: ''
+      operationId: aggregate
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregateResponse'
+components:
+  schemas:
+    SyncResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+          example: 1
+    AggregateResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          format: date-time
+          example: 2017-07-28T00:00:00.000Z
+        valorTotal:
+          type: number
+          format: double
+          example: 125.52
