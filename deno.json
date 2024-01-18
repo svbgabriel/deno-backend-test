@@ -4,12 +4,13 @@
   },
   "tasks": {
     "dev": "deno run --watch --allow-env --allow-read --allow-net --allow-sys src/server.ts",
+    "test": "deno test --allow-env --allow-read --allow-net --allow-sys",
     "mock-server": "deno run --allow-net mock-server.ts"
   },
   "imports": {
     "dotenv": "https://deno.land/std@0.212.0/dotenv/load.ts",
-    "hono": "https://deno.land/x/hono@v3.12.3/mod.ts",
-    "hono/middleware": "https://deno.land/x/hono@v3.12.3/middleware.ts",
+    "hono": "npm:hono@^3.12.3",
+    "serve-static": "npm:@hono/node-server@^1.4.0/serve-static",
     "@hono/swagger-ui": "npm:@hono/swagger-ui@^0.2.1",
     "mongoose": "npm:mongoose@^8.0.4",
     "date-fns": "npm:date-fns@^3.2.0"

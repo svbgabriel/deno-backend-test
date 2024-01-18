@@ -1,5 +1,5 @@
 import { Hono, Context } from "hono";
-import { serveStatic } from "hono/middleware";
+import { serveStatic } from "serve-static";
 import { swaggerUI } from "@hono/swagger-ui";
 import "./database/setup.ts";
 import { store, list } from "./controllers/integration-controller.ts";
